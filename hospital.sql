@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : pet
+ Source Server         : hospital
  Source Server Type    : MySQL
- Source Server Version : 50732
+ Source Server Version : 50515
  Source Host           : localhost:3306
  Source Schema         : hospital
 
  Target Server Type    : MySQL
- Target Server Version : 50732
+ Target Server Version : 50515
  File Encoding         : 65001
 
- Date: 19/04/2023 15:39:14
+ Date: 19/04/2023 16:05:11
 */
 
 SET NAMES utf8mb4;
@@ -27,7 +27,7 @@ CREATE TABLE `assay_management`  (
   `price` decimal(8, 2) NULL DEFAULT NULL,
   `description` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of assay_management
@@ -63,7 +63,7 @@ CREATE TABLE `case_management`  (
   `plan2` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `plan3` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 90 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = COMPACT;
+) ENGINE = InnoDB AUTO_INCREMENT = 90 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of case_management
@@ -131,27 +131,16 @@ CREATE TABLE `case_type`  (
   `type` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `type`(`type`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 18 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = COMPACT;
+) ENGINE = InnoDB AUTO_INCREMENT = 19 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of case_type
 -- ----------------------------
 INSERT INTO `case_type` VALUES (5, '传染病');
-INSERT INTO `case_type` VALUES (3, '免疫系统疾病');
-INSERT INTO `case_type` VALUES (8, '其他');
-INSERT INTO `case_type` VALUES (6, '口腔疾病');
-INSERT INTO `case_type` VALUES (2, '消化系统疾病');
-INSERT INTO `case_type` VALUES (14, '犬传染病');
-INSERT INTO `case_type` VALUES (15, '犬内分泌疾病');
-INSERT INTO `case_type` VALUES (12, '犬口腔疾病');
-INSERT INTO `case_type` VALUES (9, '犬外伤');
-INSERT INTO `case_type` VALUES (17, '犬心血管疾病');
-INSERT INTO `case_type` VALUES (10, '犬消化系统疾病');
-INSERT INTO `case_type` VALUES (16, '猫传染病');
-INSERT INTO `case_type` VALUES (11, '猫内分泌疾病');
-INSERT INTO `case_type` VALUES (13, '猫呼吸道疾病');
-INSERT INTO `case_type` VALUES (1, '神经系统疾病');
-INSERT INTO `case_type` VALUES (4, '肝脏疾病');
+INSERT INTO `case_type` VALUES (18, '其他');
+INSERT INTO `case_type` VALUES (8, '内科');
+INSERT INTO `case_type` VALUES (6, '外产科疾病');
+INSERT INTO `case_type` VALUES (3, '寄生虫病');
 
 -- ----------------------------
 -- Table structure for charge_management
@@ -163,7 +152,7 @@ CREATE TABLE `charge_management`  (
   `price` double(10, 2) NULL DEFAULT NULL,
   `description` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of charge_management
@@ -188,7 +177,7 @@ CREATE TABLE `department_management`  (
   `description` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `head` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of department_management
@@ -218,7 +207,7 @@ CREATE TABLE `drug_management`  (
   `price` decimal(10, 2) NULL DEFAULT NULL,
   `description` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 107 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 107 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of drug_management
@@ -249,7 +238,7 @@ CREATE TABLE `inpatient_management`  (
   `day` int(11) NULL DEFAULT NULL,
   `cost` decimal(10, 2) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of inpatient_management
@@ -273,7 +262,7 @@ CREATE TABLE `paper`  (
   `period` int(10) NULL DEFAULT NULL,
   `total_score` int(10) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of paper
@@ -293,7 +282,7 @@ CREATE TABLE `paper_question`  (
   INDEX `question_id`(`question_id`) USING BTREE,
   CONSTRAINT `paper_question_ibfk_1` FOREIGN KEY (`paper_id`) REFERENCES `paper` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `paper_question_ibfk_2` FOREIGN KEY (`question_id`) REFERENCES `question` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of paper_question
@@ -304,6 +293,49 @@ INSERT INTO `paper_question` VALUES (6, 3);
 INSERT INTO `paper_question` VALUES (1, 1);
 INSERT INTO `paper_question` VALUES (1, 2);
 INSERT INTO `paper_question` VALUES (1, 3);
+
+-- ----------------------------
+-- Table structure for position
+-- ----------------------------
+DROP TABLE IF EXISTS `position`;
+CREATE TABLE `position`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of position
+-- ----------------------------
+INSERT INTO `position` VALUES (1, '前台');
+INSERT INTO `position` VALUES (2, '医助');
+INSERT INTO `position` VALUES (3, '兽医');
+
+-- ----------------------------
+-- Table structure for position_job
+-- ----------------------------
+DROP TABLE IF EXISTS `position_job`;
+CREATE TABLE `position_job`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `position` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `job` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `detail` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `image` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `video` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of position_job
+-- ----------------------------
+INSERT INTO `position_job` VALUES (1, '前台', '招待', NULL, NULL, NULL);
+INSERT INTO `position_job` VALUES (2, '医助', '静脉注射', NULL, NULL, NULL);
+INSERT INTO `position_job` VALUES (3, '医助', '皮下注射', NULL, NULL, NULL);
+INSERT INTO `position_job` VALUES (4, '医助', '肌肉注射', NULL, NULL, NULL);
+INSERT INTO `position_job` VALUES (5, '医助', '局部封闭注射', NULL, NULL, NULL);
+INSERT INTO `position_job` VALUES (6, '兽医', '手术无菌要求', NULL, NULL, NULL);
+INSERT INTO `position_job` VALUES (7, '兽医', '常规手术', NULL, NULL, NULL);
+INSERT INTO `position_job` VALUES (8, '兽医', '特殊手术', NULL, NULL, NULL);
 
 -- ----------------------------
 -- Table structure for question
@@ -320,7 +352,7 @@ CREATE TABLE `question`  (
   `type` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `score` int(10) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of question
@@ -360,7 +392,7 @@ CREATE TABLE `record_management`  (
   `inpatient` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '是否住院',
   `department` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '责任科室',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of record_management
@@ -393,7 +425,7 @@ CREATE TABLE `staff_management`  (
   `place` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `edu` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of staff_management
@@ -431,7 +463,7 @@ CREATE TABLE `sys_user`  (
   `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   `del_flag` int(11) NULL DEFAULT 0 COMMENT '删除标志（0代表未删除，1代表已删除）',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '用户表' ROW_FORMAT = COMPACT;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '用户表' ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of sys_user
@@ -448,7 +480,7 @@ CREATE TABLE `test`  (
   `start_time` datetime NULL DEFAULT NULL,
   `end_time` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 66 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 66 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of test
@@ -468,7 +500,7 @@ CREATE TABLE `test_paper`  (
   INDEX `test_paper_ibfk_2`(`paper_id`) USING BTREE,
   CONSTRAINT `test_paper_ibfk_1` FOREIGN KEY (`test_id`) REFERENCES `test` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `test_paper_ibfk_2` FOREIGN KEY (`paper_id`) REFERENCES `paper` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of test_paper
@@ -486,7 +518,7 @@ CREATE TABLE `test_user`  (
   `user_id` int(11) NOT NULL,
   INDEX `test_id`(`test_id`) USING BTREE,
   INDEX `user_id`(`user_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of test_user
@@ -512,7 +544,7 @@ CREATE TABLE `vaccine_management`  (
   `protection` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '保护期',
   `side_effects` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '副作用',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of vaccine_management

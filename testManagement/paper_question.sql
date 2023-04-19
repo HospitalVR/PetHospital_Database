@@ -11,7 +11,7 @@
  Target Server Version : 50732
  File Encoding         : 65001
 
- Date: 31/03/2023 09:19:31
+ Date: 19/04/2023 16:52:39
 */
 
 SET NAMES utf8mb4;
@@ -33,11 +33,14 @@ CREATE TABLE `paper_question`  (
 -- ----------------------------
 -- Records of paper_question
 -- ----------------------------
-INSERT INTO `paper_question` VALUES (6, 1);
-INSERT INTO `paper_question` VALUES (6, 2);
-INSERT INTO `paper_question` VALUES (6, 3);
+INSERT INTO `paper_question` VALUES (1, 5);
 INSERT INTO `paper_question` VALUES (1, 1);
 INSERT INTO `paper_question` VALUES (1, 2);
 INSERT INTO `paper_question` VALUES (1, 3);
+INSERT INTO `paper_question` VALUES (1, 4);
+INSERT INTO `paper_question` VALUES (1, 6);
+INSERT INTO `paper_question` VALUES (12, 1);
+INSERT INTO `paper_question` VALUES (12, 3);
+INSERT INTO `paper_question` VALUES (12, 6);
 
 SET FOREIGN_KEY_CHECKS = 1;

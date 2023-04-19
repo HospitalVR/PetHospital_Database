@@ -11,7 +11,7 @@
  Target Server Version : 50732
  File Encoding         : 65001
 
- Date: 31/03/2023 09:19:08
+ Date: 19/04/2023 16:52:26
 */
 
 SET NAMES utf8mb4;
@@ -26,13 +26,14 @@ CREATE TABLE `paper`  (
   `period` int(10) NULL DEFAULT NULL,
   `total_score` int(10) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 16 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of paper
 -- ----------------------------
 INSERT INTO `paper` VALUES (1, 20, 100);
-INSERT INTO `paper` VALUES (5, 100, 0);
-INSERT INTO `paper` VALUES (6, 100, 30);
+INSERT INTO `paper` VALUES (5, 30, 0);
+INSERT INTO `paper` VALUES (6, 40, 0);
+INSERT INTO `paper` VALUES (12, 40, 30);
 
 SET FOREIGN_KEY_CHECKS = 1;

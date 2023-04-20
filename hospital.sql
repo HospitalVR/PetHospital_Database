@@ -11,7 +11,7 @@
  Target Server Version : 50732
  File Encoding         : 65001
 
- Date: 20/04/2023 15:11:44
+ Date: 20/04/2023 15:32:40
 */
 
 SET NAMES utf8mb4;
@@ -131,27 +131,16 @@ CREATE TABLE `case_type`  (
   `type` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `type`(`type`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 18 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = COMPACT;
+) ENGINE = InnoDB AUTO_INCREMENT = 19 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = COMPACT;
 
 -- ----------------------------
 -- Records of case_type
 -- ----------------------------
 INSERT INTO `case_type` VALUES (5, '传染病');
-INSERT INTO `case_type` VALUES (3, '免疫系统疾病');
-INSERT INTO `case_type` VALUES (8, '其他');
-INSERT INTO `case_type` VALUES (6, '口腔疾病');
-INSERT INTO `case_type` VALUES (2, '消化系统疾病');
-INSERT INTO `case_type` VALUES (14, '犬传染病');
-INSERT INTO `case_type` VALUES (15, '犬内分泌疾病');
-INSERT INTO `case_type` VALUES (12, '犬口腔疾病');
-INSERT INTO `case_type` VALUES (9, '犬外伤');
-INSERT INTO `case_type` VALUES (17, '犬心血管疾病');
-INSERT INTO `case_type` VALUES (10, '犬消化系统疾病');
-INSERT INTO `case_type` VALUES (16, '猫传染病');
-INSERT INTO `case_type` VALUES (11, '猫内分泌疾病');
-INSERT INTO `case_type` VALUES (13, '猫呼吸道疾病');
-INSERT INTO `case_type` VALUES (1, '神经系统疾病');
-INSERT INTO `case_type` VALUES (4, '肝脏疾病');
+INSERT INTO `case_type` VALUES (18, '其他');
+INSERT INTO `case_type` VALUES (8, '内科');
+INSERT INTO `case_type` VALUES (6, '外产科疾病');
+INSERT INTO `case_type` VALUES (3, '寄生虫病');
 
 -- ----------------------------
 -- Table structure for charge_management

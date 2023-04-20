@@ -11,7 +11,7 @@
  Target Server Version : 50732
  File Encoding         : 65001
 
- Date: 20/04/2023 13:29:19
+ Date: 20/04/2023 14:02:08
 */
 
 SET NAMES utf8mb4;
@@ -27,7 +27,7 @@ CREATE TABLE `assay_management`  (
   `price` decimal(8, 2) NULL DEFAULT NULL,
   `description` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of assay_management
@@ -163,7 +163,7 @@ CREATE TABLE `charge_management`  (
   `price` double(10, 2) NULL DEFAULT NULL,
   `description` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of charge_management
@@ -188,7 +188,7 @@ CREATE TABLE `department_management`  (
   `description` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
   `head` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of department_management
@@ -215,7 +215,7 @@ CREATE TABLE `drug_management`  (
   `price` decimal(10, 2) NULL DEFAULT NULL,
   `description` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 107 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 107 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of drug_management
@@ -246,7 +246,7 @@ CREATE TABLE `inpatient_management`  (
   `day` int(11) NULL DEFAULT NULL,
   `cost` decimal(10, 2) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of inpatient_management
@@ -270,14 +270,15 @@ CREATE TABLE `paper`  (
   `period` int(10) NULL DEFAULT NULL,
   `total_score` int(10) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 16 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of paper
 -- ----------------------------
 INSERT INTO `paper` VALUES (1, 20, 100);
-INSERT INTO `paper` VALUES (5, 100, 0);
-INSERT INTO `paper` VALUES (6, 100, 30);
+INSERT INTO `paper` VALUES (5, 30, 0);
+INSERT INTO `paper` VALUES (6, 40, 0);
+INSERT INTO `paper` VALUES (12, 40, 30);
 
 -- ----------------------------
 -- Table structure for paper_question
@@ -295,12 +296,58 @@ CREATE TABLE `paper_question`  (
 -- ----------------------------
 -- Records of paper_question
 -- ----------------------------
-INSERT INTO `paper_question` VALUES (6, 1);
-INSERT INTO `paper_question` VALUES (6, 2);
-INSERT INTO `paper_question` VALUES (6, 3);
+INSERT INTO `paper_question` VALUES (1, 5);
 INSERT INTO `paper_question` VALUES (1, 1);
 INSERT INTO `paper_question` VALUES (1, 2);
 INSERT INTO `paper_question` VALUES (1, 3);
+INSERT INTO `paper_question` VALUES (1, 4);
+INSERT INTO `paper_question` VALUES (1, 6);
+INSERT INTO `paper_question` VALUES (12, 1);
+INSERT INTO `paper_question` VALUES (12, 3);
+INSERT INTO `paper_question` VALUES (12, 6);
+
+-- ----------------------------
+-- Table structure for position
+-- ----------------------------
+DROP TABLE IF EXISTS `position`;
+CREATE TABLE `position`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = COMPACT;
+
+-- ----------------------------
+-- Records of position
+-- ----------------------------
+INSERT INTO `position` VALUES (1, '前台');
+INSERT INTO `position` VALUES (2, '医助');
+INSERT INTO `position` VALUES (3, '兽医');
+
+-- ----------------------------
+-- Table structure for position_job
+-- ----------------------------
+DROP TABLE IF EXISTS `position_job`;
+CREATE TABLE `position_job`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `position` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `job` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `detail` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `image` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `video` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = COMPACT;
+
+-- ----------------------------
+-- Records of position_job
+-- ----------------------------
+INSERT INTO `position_job` VALUES (1, '前台', '招待', NULL, NULL, NULL);
+INSERT INTO `position_job` VALUES (2, '医助', '静脉注射', NULL, NULL, NULL);
+INSERT INTO `position_job` VALUES (3, '医助', '皮下注射', NULL, NULL, NULL);
+INSERT INTO `position_job` VALUES (4, '医助', '肌肉注射', NULL, NULL, NULL);
+INSERT INTO `position_job` VALUES (5, '医助', '局部封闭注射', NULL, NULL, NULL);
+INSERT INTO `position_job` VALUES (6, '兽医', '手术无菌要求', NULL, NULL, NULL);
+INSERT INTO `position_job` VALUES (7, '兽医', '常规手术', NULL, NULL, NULL);
+INSERT INTO `position_job` VALUES (8, '兽医', '特殊手术', NULL, NULL, NULL);
 
 -- ----------------------------
 -- Table structure for question
@@ -317,7 +364,7 @@ CREATE TABLE `question`  (
   `type` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `score` int(10) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 38 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of question
@@ -334,6 +381,31 @@ INSERT INTO `question` VALUES (9, '猫咪突然出现眼睛流泪、结膜充血
 INSERT INTO `question` VALUES (10, '狗狗突然出现呕吐、腹泻、腹部胀痛等症状，经检查发现患有胃扭转，应该采取哪种手术治疗方式？', '胃部切除术', '腹腔镜手术', '胃复位手术', '腹膜透析手术', 'C', '常用手术', 10);
 INSERT INTO `question` VALUES (11, '狗狗刚刚接种了疫苗，主人应该如何照顾狗狗？', '让狗狗多吃鸡肉和牛肉，以促进身体恢复', '将狗狗隔离在一个安静的环境中，不要让它过度活动', '给狗狗服用解热镇痛药，以减轻不适', '给狗狗洗个澡，以保持清洁', 'B', '免疫', 10);
 INSERT INTO `question` VALUES (12, '狗狗接种疫苗后，出现了局部肿胀、疼痛等症状，这种现象被称为什么？', '疫苗反应', '疫苗过敏', '疫苗感染', '疫苗失效', 'A', '免疫', 10);
+INSERT INTO `question` VALUES (13, '宠物出现频繁排尿、尿液深黄色、甚至出现血尿，可能患有以下哪种疾病？', '膀胱炎', '肾炎', '糖尿病', '有机磷中毒', 'A', '内科', 10);
+INSERT INTO `question` VALUES (14, '宠物出现口渴、多尿、食欲减退、体重下降等症状，可能患有以下哪种疾病？', '膀胱炎', '肾炎', '糖尿病', '有机磷中毒', 'C', '内科', 10);
+INSERT INTO `question` VALUES (15, '宠物出现腰部疼痛、站立不稳、尿液囊块，可能患有以下哪种疾病？', '尿结石', '膀胱炎', '肾炎', '佝偻病', 'A', '内科', 10);
+INSERT INTO `question` VALUES (16, '宠物出现发热、食欲不振、呕吐、腹泻等症状，可能患有以下哪种疾病？', '尿结石', '膀胱炎', '中耳炎', '结膜炎', 'B', '内科', 10);
+INSERT INTO `question` VALUES (17, '宠物出现恶心、呕吐、食欲不振、口臭等症状，可能患有以下哪种疾病？', '肾炎', '糖尿病', '膀胱炎', ' 耳血肿', 'A', '内科', 10);
+INSERT INTO `question` VALUES (18, '宠物出现头痛、眼睛发红、角膜炎、眼屎等症状，可能患有以下哪种疾病？', '眼睑内翻', '结膜炎', '中耳炎', '耳血肿', 'B', '内科', 10);
+INSERT INTO `question` VALUES (19, '宠物出现无力、呼吸困难、出汗过多、瞳孔散大等症状，可能患有以下哪种疾病？', '膀胱炎', '中耳炎', '有机磷中毒', '耳血肿', 'C', '内科', 10);
+INSERT INTO `question` VALUES (20, '宠物出现外伤、淤血、出血等症状，可能患有以下哪种疾病？', '趾间囊肿', '骨折', '关节脱位', '外科感染', 'C', '外产科疾病', 10);
+INSERT INTO `question` VALUES (21, '宠物出现明显的骨折、疼痛、无法支撑体重等症状，可能患有以下哪种疾病？', '骨折', '关节脱位', '外伤', '脓皮病', 'A', '外产科疾病', 10);
+INSERT INTO `question` VALUES (22, '宠物出现肩膀或臀部脱位、关节疼痛等症状，可能患有以下哪种疾病？', '骨折', '关节脱位', '外伤', '皮炎', 'B', '外产科疾病', 10);
+INSERT INTO `question` VALUES (23, '宠物出现皮肤瘙痒、红斑、水疱、糜烂等症状，可能患有以下哪种疾病？', '湿疹', '皮炎', '脓皮病', '脱毛症', 'A', '外产科疾病', 10);
+INSERT INTO `question` VALUES (24, '宠物出现皮肤发红、瘙痒、毛发脱落、皮肤糜烂等症状，可能患有以下哪种疾病？', '湿疹', '皮炎', '脓皮病', '脱毛症', 'B', '外产科疾病', 10);
+INSERT INTO `question` VALUES (25, '宠物出现乳头红肿、硬结、分泌物增多等症状，可能患有以下哪种疾病？', '乳房炎', '阴道炎', '阴道脱出', '子宫蓄脓', 'A', '外产科疾病', 10);
+INSERT INTO `question` VALUES (26, '宠物出现肛门周围隆起、疼痛、排便不畅等症状，可能患有以下哪种疾病？', '疝', '难产', '外科', '阴道脱出', 'A', '外产科疾病', 10);
+INSERT INTO `question` VALUES (27, '宠物出现阴道流脓、瘙痒、尿频、尿急等症状，可能患有以下哪种疾病？', '乳房炎', '乳房炎', '阴道脱出', '子宫蓄脓', 'B', '外产科疾病', 10);
+INSERT INTO `question` VALUES (28, '宠物出现发热、咳嗽、流眼泪、鼻涕等症状，可能患有以下哪种疾病？', '犬瘟热', '犬传染性肝炎', '犬冠状病毒', '犬细小病毒', 'D', '传染病', 10);
+INSERT INTO `question` VALUES (29, '宠物出现发热、腹泻、呕吐、食欲不振等症状，可能患有以下哪种疾病？', '犬瘟热', '犬传染性肝炎', '犬冠状病毒', '犬细小病毒', 'B', '传染病', 10);
+INSERT INTO `question` VALUES (30, '宠物出现腹泻、呕吐、流口水、发热等症状，可能患有以下哪种疾病？', '犬瘟热', '犬传染性肝炎', '犬冠状病毒', '犬细小病毒', 'C', '传染病', 10);
+INSERT INTO `question` VALUES (31, '宠物出现打喷嚏、咳嗽、流鼻涕、呼吸困难等症状，可能患有以下哪种疾病？', '犬瘟热', '犬传染性肝炎', '犬冠状病毒', '犬细小病毒', 'C', '传染病', 10);
+INSERT INTO `question` VALUES (32, '宠物出现贫血、发热、食欲不振等症状，可能患有以下哪种疾病？', '猫泛白细胞减少症', '猫病毒性病气管炎', '皮肤真菌感染', '犬瘟热', 'A', '传染病', 10);
+INSERT INTO `question` VALUES (33, '宠物出现咳嗽、呼吸急促、发热、打喷嚏等症状，可能患有以下哪种疾病？', '猫泛白细胞减少症', '猫病毒性病气管炎', '皮肤真菌感染', '犬细小病毒', 'B', '传染病', 10);
+INSERT INTO `question` VALUES (34, '以下哪种症状是猫白血病的常见表现？', '皮肤瘙痒和红肿', '呕吐和腹泻', '疲乏无力和食欲减退', '呼吸急促和发热', 'C', '传染病', 10);
+INSERT INTO `question` VALUES (35, '以下哪种症状是猫白血病的常见表现？', '皮肤瘙痒和红肿', '呕吐和腹泻', '疲乏无力和食欲减退', '呼吸急促和发热', 'C', '传染病', 10);
+INSERT INTO `question` VALUES (36, '以下哪种症状是猫传染性腹膜炎的表现？', '食欲减退和体重下降', '呼吸急促和发热', '呕吐和腹泻', '腹部肿胀和疼痛', 'D', '传染病', 10);
+INSERT INTO `question` VALUES (37, '以下哪种症状是猫传染性鼻气管炎的表现？', '眼睛发红和流泪', '鼻涕和咳嗽', '皮肤瘙痒和头晕', '食欲减退和呕吐', 'B', '传染病', 10);
 
 -- ----------------------------
 -- Table structure for record_management
@@ -357,7 +429,7 @@ CREATE TABLE `record_management`  (
   `inpatient` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '是否住院',
   `department` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '责任科室',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of record_management
@@ -390,7 +462,7 @@ CREATE TABLE `staff_management`  (
   `place` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
   `edu` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of staff_management
@@ -444,14 +516,15 @@ CREATE TABLE `test`  (
   `start_time` datetime NULL DEFAULT NULL,
   `end_time` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 66 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 68 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of test
 -- ----------------------------
 INSERT INTO `test` VALUES (63, '2023-03-31 08:57:49', '2023-03-31 08:57:49');
 INSERT INTO `test` VALUES (64, '2023-03-31 08:57:51', '2023-03-31 08:57:51');
-INSERT INTO `test` VALUES (65, '2023-03-31 08:58:41', '2023-03-31 08:58:41');
+INSERT INTO `test` VALUES (66, '2023-04-14 10:13:30', '2023-04-14 10:13:30');
+INSERT INTO `test` VALUES (67, '2023-04-14 10:38:25', '2023-04-14 10:38:25');
 
 -- ----------------------------
 -- Table structure for test_paper
@@ -471,7 +544,7 @@ CREATE TABLE `test_paper`  (
 -- ----------------------------
 INSERT INTO `test_paper` VALUES (63, 1);
 INSERT INTO `test_paper` VALUES (64, 1);
-INSERT INTO `test_paper` VALUES (65, 1);
+INSERT INTO `test_paper` VALUES (67, 6);
 
 -- ----------------------------
 -- Table structure for test_user
@@ -493,6 +566,22 @@ INSERT INTO `test_user` VALUES (64, 2);
 INSERT INTO `test_user` VALUES (64, 3);
 INSERT INTO `test_user` VALUES (65, 2);
 INSERT INTO `test_user` VALUES (65, 3);
+INSERT INTO `test_user` VALUES (66, 3);
+INSERT INTO `test_user` VALUES (67, 3);
+
+-- ----------------------------
+-- Table structure for user_login
+-- ----------------------------
+DROP TABLE IF EXISTS `user_login`;
+CREATE TABLE `user_login`  (
+  `account` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `password` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`account`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = COMPACT;
+
+-- ----------------------------
+-- Records of user_login
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for vaccine_management
@@ -509,7 +598,7 @@ CREATE TABLE `vaccine_management`  (
   `side_effects` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '' COMMENT '副作用',
   `price` decimal(10, 2) NOT NULL COMMENT '价格',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of vaccine_management

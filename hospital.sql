@@ -11,7 +11,7 @@
  Target Server Version : 50732
  File Encoding         : 65001
 
- Date: 19/04/2023 15:39:14
+ Date: 20/04/2023 13:26:34
 */
 
 SET NAMES utf8mb4;
@@ -23,9 +23,9 @@ SET FOREIGN_KEY_CHECKS = 0;
 DROP TABLE IF EXISTS `assay_management`;
 CREATE TABLE `assay_management`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
   `price` decimal(8, 2) NULL DEFAULT NULL,
-  `description` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `description` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
@@ -159,9 +159,9 @@ INSERT INTO `case_type` VALUES (4, '肝脏疾病');
 DROP TABLE IF EXISTS `charge_management`;
 CREATE TABLE `charge_management`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
   `price` double(10, 2) NULL DEFAULT NULL,
-  `description` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `description` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
@@ -184,29 +184,26 @@ INSERT INTO `charge_management` VALUES (10, '特殊治疗', 1000.00, '包括特�
 DROP TABLE IF EXISTS `department_management`;
 CREATE TABLE `department_management`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `description` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `head` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
+  `description` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
+  `head` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of department_management
 -- ----------------------------
-INSERT INTO `department_management` VALUES (1, '前台', '包括接待挂号、导医咨询、病历档案发出与回收、收费等。', '前台');
-INSERT INTO `department_management` VALUES (2, '档案室', '包括病例档案的合理保存与数据统计等。', '前台');
-INSERT INTO `department_management` VALUES (3, '诊室', '包括诊室的布局介绍；对宠物进行临床基本检查（视、听、触、嗅等）、疾病诊断；与宠物主人交流并根据情况开具处方。', '执业兽医师');
-INSERT INTO `department_management` VALUES (4, '免疫室', '包括为健康宠物接种疫苗的流程，对常见并发症的处理流程，对常见免疫相关问题的解答等。', '助理执业兽医师');
-INSERT INTO `department_management` VALUES (5, '化验室', '包括对送检样本的预处理，对相应样本进行血常规、血液生化、电解质、血气、血凝指标、激素指标、尿常规、微生物学检查、药敏、皮肤刮片、粪便检查、传染病检查等检查操作流程。', '助理执业兽医师');
-INSERT INTO `department_management` VALUES (6, '影像室', '包括X线检查、B超检查以及CT、MRI检查。如X线检查：X光机的结构功能介绍、全身各部位的摆位、拍摄条件的选择、拍摄流程、洗片的操作流程。B超检查：扫查探头的选择、全身各个部位扫查的摆位、腹部扫查流程。', '助理执业兽医师');
-INSERT INTO `department_management` VALUES (7, '专科检查室', '包括对眼科、骨科、神经科、心脏科等专科疾病的检查，如眼科（检眼镜检查、眼压检查、裂隙灯检查、眼底检查、泪液分泌量检查等）、心脏科检查（心脏听诊、心电图检查等）、神经学检查（步态检查、各种反射检查等）等。', '执业兽医师');
-INSERT INTO `department_management` VALUES (8, '处置室', '包括口服投药、换药、清洗耳道、挤肛门腺、修剪指甲、鼻饲管放置、灌肠、安乐死等基本处置操作流程。', '助理执业兽医师');
-INSERT INTO `department_management` VALUES (9, '药房', '包括对各种药物的存放要求、处方的审核流程、药物的发放流程、常见药物的使用说明等。', '助理执业兽医师');
-INSERT INTO `department_management` VALUES (10, '注射室', '包括静脉注射、皮下注射、肌肉注射、局部封闭注射的操作流程，常见问题的处理方法，输液泵、加热垫的使用方法，注射室的消毒流程。', '助理执业兽医师');
-INSERT INTO `department_management` VALUES (11, '手术准备室', '包括术前对宠物进行麻前给药、注射麻醉、吸入麻醉的流程，保定、剃毛、消毒的流程，常见手术器械的介绍，手术器械包的准备、灭菌流程，手术人员的消毒、穿戴手术衣流程等。', '助理执业兽医师');
-INSERT INTO `department_management` VALUES (12, '手术室', '包括手术室的布局介绍，手术室消毒流程，手术无菌要求，常规手术、特殊手等的操作规范。', '执业兽医师');
-INSERT INTO `department_management` VALUES (13, '住院部', '包括对需要住院的病例进行护理分级，不同护理级别的要求，住院部的工作流程，住院部的消毒流程等。', '住院执业兽医师或助理执业兽医师');
-INSERT INTO `department_management` VALUES (14, '病理剖检室', '包括对病死动物剖解的流程，病理剖检室的消毒流程，病历剖检过程的人员要求，病理剖检过程中的人道关怀。', '执业兽医师');
+INSERT INTO `department_management` VALUES (1, '内科', '内科是宠物医院的基础科室之一，主要负责宠物常见疾病的诊疗，包括呼吸系统、循环系统、消化系统等。科室配备有专业的内科医生和先进的检查设备，致力于为宠物提供全面、精细的内科诊疗服务。', NULL);
+INSERT INTO `department_management` VALUES (2, '外科', '外科是宠物医院的基础科室之一，主要负责各类外科手术和创伤的诊疗，包括骨折、软组织损伤、肿瘤切除等。科室配备有专业的外科医生和先进的手术设备，致力于为宠物提供安全、有效的外科治疗服务。', NULL);
+INSERT INTO `department_management` VALUES (3, '牙科', '牙科是宠物医院的特色科室之一，主要负责宠物口腔疾病的诊疗，包括龋齿、牙周病、口腔肿瘤等。科室配备有专业的牙科医生和先进的口腔设备，致力于为宠物提供全面、精细的口腔诊疗服务。', NULL);
+INSERT INTO `department_management` VALUES (4, '皮肤科', '皮肤科是宠物医院的特色科室之一，主要负责各类皮肤疾病的诊疗，包括皮炎、脱毛、瘙痒症等。科室配备有专业的皮肤医生和先进的皮肤检查设备，致力于为宠物提供全面、精细的皮肤诊疗服务。', NULL);
+INSERT INTO `department_management` VALUES (5, '耳鼻喉科', '耳鼻喉科是宠物医院的特色科室之一，主要负责各类宠物的耳鼻喉疾病的诊疗，包括中耳炎、鼻窦炎、喉炎等。科室配备有专业的耳鼻喉医生和先进的检查设备，致力于为宠物提供全面、精细的耳鼻喉诊疗服务。', NULL);
+INSERT INTO `department_management` VALUES (6, '眼科', '眼科是宠物医院的特色科室之一，主要负责宠物眼部疾病的诊疗，包括结膜炎、白内障、青光眼等。科室配备有专业的眼科医生和先进的眼部检查设备，致力于为宠物提供全面、精细的眼科诊疗服务。', NULL);
+INSERT INTO `department_management` VALUES (7, '营养科', '营养科是宠物医院的特色科室之一，主要负责宠物饮食调配和营养问题的诊疗，包括肥胖症、营养不良等。科室配备有专业的营养师和先进的饮食调配设备，致力于为宠物提供全面、科学的营养诊疗服务。', NULL);
+INSERT INTO `department_management` VALUES (8, '急诊科', '急诊科是宠物医院的重要科室之一，主要负责各类宠物急诊情况的抢救和治疗，包括意外伤害、中毒、心脏骤停等。科室配备有专业的急诊医生和先进的急救设备，随时待命为宠物提供紧急救治服务。', NULL);
+INSERT INTO `department_management` VALUES (9, '康复科', '康复科是宠物医院的特色科室之一，主要负责宠物康复训练和治疗，包括运动障碍、肌肉萎缩、骨折康复等。科室配备有专业的康复师和先进的康复设备，致力于为宠物提供全面、精细的康复诊疗服务。', NULL);
+INSERT INTO `department_management` VALUES (10, '兽医服务科', '兽医服务科是宠物医院的重要科室之一，主要负责宠物疫苗接种、体检、驱虫等基本服务，同时提供健康管理和预防保健等服务。科室配备有专业的兽医师和先进的诊疗设备，致力于为宠物提供全面、贴心的健康管理服务。', NULL);
+INSERT INTO `department_management` VALUES (11, '宠物美容美发科', '宠物美容美发科是宠物医院的特色科室之一，主要负责为宠物提供美容和修剪毛发的服务。科室配备有专业的美容师和先进的美容设备，致力于为宠物提供舒适、安全、高质量的美容服务。', NULL);
 
 -- ----------------------------
 -- Table structure for drug_management
@@ -214,9 +211,9 @@ INSERT INTO `department_management` VALUES (14, '病理剖检室', '包括对病
 DROP TABLE IF EXISTS `drug_management`;
 CREATE TABLE `drug_management`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
   `price` decimal(10, 2) NULL DEFAULT NULL,
-  `description` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `description` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 107 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
@@ -239,11 +236,11 @@ INSERT INTO `drug_management` VALUES (106, '新的', 12.00, '没什么用');
 DROP TABLE IF EXISTS `inpatient_management`;
 CREATE TABLE `inpatient_management`  (
   `id` int(11) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `breed` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `owner` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `phone` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `reason` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
+  `breed` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
+  `owner` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
+  `phone` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
+  `reason` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
   `admission` date NULL DEFAULT NULL,
   `discharge` date NULL DEFAULT NULL,
   `day` int(11) NULL DEFAULT NULL,
@@ -254,15 +251,15 @@ CREATE TABLE `inpatient_management`  (
 -- ----------------------------
 -- Records of inpatient_management
 -- ----------------------------
-INSERT INTO `inpatient_management` VALUES (00000000001, '小猫', '苏格兰折耳猫', '张三', '13912345678', '感冒', '2023-03-01', '2023-03-04', 3, 500.00);
-INSERT INTO `inpatient_management` VALUES (00000000002, '小狗', '拉布拉多', '李四', '13698765432', '创伤', '2023-03-03', '2023-03-08', 5, 1200.00);
-INSERT INTO `inpatient_management` VALUES (00000000003, '小鸟', '金丝雀', '王五', '18011112222', '消化不良', '2023-03-05', '2023-03-07', 2, 300.00);
-INSERT INTO `inpatient_management` VALUES (00000000004, '小兔', '荷兰侏儒兔', '赵六', '010-88888888', '发烧', '2023-03-06', '2023-03-11', 5, 800.00);
-INSERT INTO `inpatient_management` VALUES (00000000005, '小龟', '红耳龟', '钱七', '0755-12345678', '腹泻', '2023-03-09', '2023-03-15', 6, 900.00);
-INSERT INTO `inpatient_management` VALUES (00000000006, '小鱼', '金鱼', '张三', '13912345678', '中毒', '2023-03-11', '2023-03-12', 1, 100.00);
-INSERT INTO `inpatient_management` VALUES (00000000007, '小猫', '苏格兰折耳猫', '李四', '13698765432', '感冒', '2023-03-15', '2023-03-18', 3, 500.00);
-INSERT INTO `inpatient_management` VALUES (00000000008, '小狗', '拉布拉多', '王五', '18011112222', '骨折', '2023-03-18', '2023-03-27', 9, 2000.00);
-INSERT INTO `inpatient_management` VALUES (00000000009, '小鸟', '金丝雀', '赵六', '010-88888888', '感冒', '2023-03-20', '2023-03-24', 4, 600.00);
+INSERT INTO `inpatient_management` VALUES (00000000001, '小猫', '苏格兰折耳猫', '张三', '13912345678', '尿道感染', '2023-03-01', '2023-03-04', 3, 500.00);
+INSERT INTO `inpatient_management` VALUES (00000000002, '小狗', '拉布拉多', '李四', '13698765432', '子宫蓄脓', '2023-03-03', '2023-03-08', 5, 1200.00);
+INSERT INTO `inpatient_management` VALUES (00000000003, '小鸟', '金丝雀', '王五', '18011112222', '骨折', '2023-03-05', '2023-03-07', 2, 300.00);
+INSERT INTO `inpatient_management` VALUES (00000000004, '小兔', '荷兰侏儒兔', '赵六', '010-88888888', '胰腺炎', '2023-03-06', '2023-03-11', 5, 800.00);
+INSERT INTO `inpatient_management` VALUES (00000000005, '小龟', '红耳龟', '钱七', '0755-12345678', '心力衰竭', '2023-03-09', '2023-03-15', 6, 900.00);
+INSERT INTO `inpatient_management` VALUES (00000000006, '小鱼', '金鱼', '张三', '13912345678', '尿结石', '2023-03-11', '2023-03-12', 1, 100.00);
+INSERT INTO `inpatient_management` VALUES (00000000007, '小猫', '苏格兰折耳猫', '李四', '13698765432', '关节脱位', '2023-03-15', '2023-03-18', 3, 500.00);
+INSERT INTO `inpatient_management` VALUES (00000000008, '小狗', '拉布拉多', '王五', '18011112222', '膀胱炎', '2023-03-18', '2023-03-27', 9, 2000.00);
+INSERT INTO `inpatient_management` VALUES (00000000009, '小鸟', '金丝雀', '赵六', '010-88888888', '骨折', '2023-03-20', '2023-03-24', 4, 600.00);
 
 -- ----------------------------
 -- Table structure for paper
@@ -344,37 +341,37 @@ INSERT INTO `question` VALUES (12, '狗狗接种疫苗后，出现了局部肿�
 DROP TABLE IF EXISTS `record_management`;
 CREATE TABLE `record_management`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `breed` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
+  `breed` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
   `age` int(11) NULL DEFAULT NULL,
-  `gender` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `color` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `owner` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `phone` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `disease` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `doctor` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '主治医师',
-  `charge` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '收费项目',
-  `drug` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `vaccine` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `assay` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `inpatient` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '是否住院',
-  `department` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '责任科室',
+  `gender` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
+  `color` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
+  `owner` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
+  `phone` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
+  `disease` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
+  `doctor` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '主治医师',
+  `charge` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '收费项目',
+  `drug` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
+  `vaccine` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
+  `assay` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
+  `inpatient` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '是否住院',
+  `department` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '责任科室',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of record_management
 -- ----------------------------
-INSERT INTO `record_management` VALUES (1, '小明', '猫', 1, '母', '灰色', '张三', '13912345678', '猫白血病', '张三', '住院', NULL, NULL, '血常规', '是', '住院部');
-INSERT INTO `record_management` VALUES (2, '小白', '狗', 2, '公', '黑色', '李四', '13698765432', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `record_management` VALUES (3, '小红', '兔子', 3, '母', '棕色', '王五', '18011112222', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `record_management` VALUES (4, '小黑', '狗', 2, '公', '白色', '赵六', '010-88888888', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `record_management` VALUES (5, '小花', '猫', 1, '母', '黑色', '钱七', '0755-12345678', '猫白血病', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `record_management` VALUES (6, '小光', '狗', 2, '公', '棕色', '张三', '13912345678', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `record_management` VALUES (7, '小龙', '爬行类', 3, '未知', '绿色', '李四', '13698765432', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `record_management` VALUES (8, '小虎', '狗', 2, '公', '灰色', '王五', '18011112222', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `record_management` VALUES (9, '小鸟', '鸟类', 4, '母', '彩色', '赵六', '010-88888888', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `record_management` VALUES (10, '小熊', '狗', 5, '公', '棕色', '钱七', '0755-12345678', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `record_management` VALUES (1, '小明', '猫', 1, '母', '灰色', '雅琳娜', '13912345678', '骨折', '张三', '住院，急诊诊察', NULL, NULL, '', '是', '外科');
+INSERT INTO `record_management` VALUES (2, '小白', '狗', 2, '公', '黑色', '阿瑟', '13698765432', '钩虫病', '张十二', '普通诊察，血液学检查', NULL, NULL, '血常规', '否', '内科');
+INSERT INTO `record_management` VALUES (3, '小红', '兔子', 3, '母', '棕色', '珍妮特', '18011112222', '球虫病', '孙八', '普通诊察，血液学检查', NULL, NULL, '血常规', '否', '内科');
+INSERT INTO `record_management` VALUES (4, '小黑', '狗', 2, '公', '白色', '安德鲁', '010-88888888', '皮肤真菌感染', '钱七', '普通诊察，血液学检查', NULL, NULL, '血常规', '否', '皮肤科');
+INSERT INTO `record_management` VALUES (5, '小花', '猫', 1, '母', '黑色', '萨拉', '0755-12345678', '骨折', '张三', '住院，急诊诊察', NULL, NULL, NULL, '是', '外科');
+INSERT INTO `record_management` VALUES (6, '小光', '狗', 2, '公', '棕色', '雅琳娜', '13912345678', '疥螨虫病', '刘十一', '普通诊察，血液学检查', '狗止痒', NULL, '血常规', '否', '兽医服务科');
+INSERT INTO `record_management` VALUES (7, '小龙', '爬行类', 3, '未知', '绿色', '阿瑟', '13698765432', '疥螨虫病', '刘十一', '普通诊察，血液学检查', '', NULL, '血常规', '否', '兽医服务科');
+INSERT INTO `record_management` VALUES (8, '小虎', '狗', 2, '公', '灰色', '珍妮特', '18011112222', '肺炎', '李四', '普通诊察，血液学检查，住院', NULL, '犬肺炎疫苗', '血常规', '是', '内科');
+INSERT INTO `record_management` VALUES (9, '小鸟', '鸟类', 4, '母', '彩色', '安德鲁', '010-88888888', '有机磷中毒', '李四', '普通诊察，血液学检查', '鸟免疫宝', '', '血常规', '否', '急诊科');
+INSERT INTO `record_management` VALUES (10, '小熊', '狗', 5, '公', '棕色', '萨拉', '0755-12345678', '有机磷中毒', '李四', '普通诊察，血液学检查', NULL, NULL, '血常规', '否', '急诊科');
 
 -- ----------------------------
 -- Table structure for staff_management
@@ -382,16 +379,16 @@ INSERT INTO `record_management` VALUES (10, '小熊', '狗', 5, '公', '棕色',
 DROP TABLE IF EXISTS `staff_management`;
 CREATE TABLE `staff_management`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
   `age` int(11) NULL DEFAULT NULL,
-  `gender` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `position` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `gender` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
+  `position` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
   `experience` int(11) NULL DEFAULT NULL,
-  `phone` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `idnumber` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `phone` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
+  `idnumber` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
   `date` date NULL DEFAULT NULL,
-  `place` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `edu` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `place` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
+  `edu` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
@@ -408,7 +405,6 @@ INSERT INTO `staff_management` VALUES (7, '吴九', 29, '男', '兽医师', 4, '
 INSERT INTO `staff_management` VALUES (8, '郑十', 31, '女', '兽医护士', 6, '13212345678', '430101198902040008', '2021-09-01', '湖南省', '本科');
 INSERT INTO `staff_management` VALUES (9, '刘十一', 24, '男', '实习兽医师', 1, '13112345678', '230101199912060009', '2021-09-01', '黑龙江省', '大专');
 INSERT INTO `staff_management` VALUES (10, '张十二', 26, '女', '兽医护士', 4, '13012345678', '610101199710040010', '2021-09-01', '陕西省', '本科');
-INSERT INTO `staff_management` VALUES (11, '哼哼', 123, '男', 'lk', 3, '123', '123456', '2020-03-10', '哈哈', 'asdj');
 
 -- ----------------------------
 -- Table structure for sys_user
@@ -504,26 +500,27 @@ INSERT INTO `test_user` VALUES (65, 3);
 DROP TABLE IF EXISTS `vaccine_management`;
 CREATE TABLE `vaccine_management`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '名称',
-  `animal` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '目标动物',
-  `type` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '疫苗类型',
-  `method` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '接种方法',
-  `time` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '接种时间',
-  `protection` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '保护期',
-  `side_effects` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '副作用',
+  `name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '' COMMENT '名称',
+  `animal` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '' COMMENT '目标动物',
+  `type` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '' COMMENT '疫苗类型',
+  `method` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '' COMMENT '接种方法',
+  `time` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '' COMMENT '接种时间',
+  `protection` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '' COMMENT '保护期',
+  `side_effects` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '' COMMENT '副作用',
+  `price` decimal(10, 2) NOT NULL COMMENT '价格',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of vaccine_management
 -- ----------------------------
-INSERT INTO `vaccine_management` VALUES (1, '多价犬瘟热联合疫苗', '犬', '减毒活疫苗', '注射', '6-8周龄、12-16周龄、1岁后每年接种一次', '一年', '一般情况下无明显副作用，极少数狗狗可能会出现发热、厌食、呕吐等症状');
-INSERT INTO `vaccine_management` VALUES (2, '狂犬病疫苗', '犬', '减毒活疫苗', '注射', '3-4个月龄开始接种，1岁后每年接种一次', '一年', '一般情况下无明显副作用，少数狗狗可能会出现注射部位肿胀、发热等症状');
-INSERT INTO `vaccine_management` VALUES (3, '三联疫苗（猫瘟热、猫传染性腹膜炎、猫呼吸道病毒感染）', '猫', '减毒活疫苗', '注射', '8-12周龄、1岁后每年接种一次', '一年', '一般情况下无明显副作用，极少数猫咪可能会出现注射部位肿胀、发热、呕吐等症状');
-INSERT INTO `vaccine_management` VALUES (4, '猫狂犬病疫苗', '猫', '减毒活疫苗', '注射', '3-4个月龄开始接种，1岁后每年接种一次', '一年', '一般情况下无明显副作用，少数猫咪可能会出现注射部位肿胀、发热等症状');
-INSERT INTO `vaccine_management` VALUES (5, '弓形虫疫苗', '犬、猫', '杀死细胞疫苗', '注射', '接种时间因动物品种、年龄、疾病状态等而异', '一年', '一般情况下无明显副作用，极少数动物可能会出现注射部位肿胀、发热等症状');
-INSERT INTO `vaccine_management` VALUES (6, '细小病毒疫苗', '犬', '减毒活疫苗', '鼻腔滴入', '6-8周龄、10-12周龄、14-16周龄，1岁后每年接种一次', '一年', '一般情况下无明显副作用，少数狗狗可能会出现打喷嚏、咳嗽等症状');
-INSERT INTO `vaccine_management` VALUES (7, '犬肺炎疫苗', '犬', '灭活疫苗', '注射', '8-10周龄、12-14周龄、16-18周龄、20-22周龄，1岁后每年接种一次', '一年', '一般情况下无明显副作用，少数狗狗可能会出现注射部位肿胀、发热等症状');
-INSERT INTO `vaccine_management` VALUES (9, '猫肺炎疫苗', '猫', '灭活疫苗', '注射', '8-10周龄、12-14周龄、16-18周龄，1岁后每年接种一次', '一年', '一般情况下无明显副作用，少数猫咪可能会出现注射部位肿胀、发热等症状');
+INSERT INTO `vaccine_management` VALUES (1, '多价犬瘟热联合疫苗', '犬', '减毒活疫苗', '注射', '6-8周龄、12-16周龄、1岁后每年接种一次', '一年', '一般情况下无明显副作用，极少数狗狗可能会出现发热、厌食、呕吐等症状', 50.00);
+INSERT INTO `vaccine_management` VALUES (2, '狂犬病疫苗', '犬', '减毒活疫苗', '注射', '3-4个月龄开始接种，1岁后每年接种一次', '一年', '一般情况下无明显副作用，少数狗狗可能会出现注射部位肿胀、发热等症状', 50.00);
+INSERT INTO `vaccine_management` VALUES (3, '三联疫苗（猫瘟热、猫传染性腹膜炎、猫呼吸道病毒感染）', '猫', '减毒活疫苗', '注射', '8-12周龄、1岁后每年接种一次', '一年', '一般情况下无明显副作用，极少数猫咪可能会出现注射部位肿胀、发热、呕吐等症状', 100.00);
+INSERT INTO `vaccine_management` VALUES (4, '猫狂犬病疫苗', '猫', '减毒活疫苗', '注射', '3-4个月龄开始接种，1岁后每年接种一次', '一年', '一般情况下无明显副作用，少数猫咪可能会出现注射部位肿胀、发热等症状', 200.00);
+INSERT INTO `vaccine_management` VALUES (5, '弓形虫疫苗', '犬、猫', '杀死细胞疫苗', '注射', '接种时间因动物品种、年龄、疾病状态等而异', '一年', '一般情况下无明显副作用，极少数动物可能会出现注射部位肿胀、发热等症状', 150.00);
+INSERT INTO `vaccine_management` VALUES (6, '细小病毒疫苗', '犬', '减毒活疫苗', '鼻腔滴入', '6-8周龄、10-12周龄、14-16周龄，1岁后每年接种一次', '一年', '一般情况下无明显副作用，少数狗狗可能会出现打喷嚏、咳嗽等症状', 350.00);
+INSERT INTO `vaccine_management` VALUES (7, '犬肺炎疫苗', '犬', '灭活疫苗', '注射', '8-10周龄、12-14周龄、16-18周龄、20-22周龄，1岁后每年接种一次', '一年', '一般情况下无明显副作用，少数狗狗可能会出现注射部位肿胀、发热等症状', 120.00);
+INSERT INTO `vaccine_management` VALUES (9, '猫肺炎疫苗', '猫', '灭活疫苗', '注射', '8-10周龄、12-14周龄、16-18周龄，1岁后每年接种一次', '一年', '一般情况下无明显副作用，少数猫咪可能会出现注射部位肿胀、发热等症状', 150.00);
 
 SET FOREIGN_KEY_CHECKS = 1;

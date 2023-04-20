@@ -11,7 +11,7 @@
  Target Server Version : 50732
  File Encoding         : 65001
 
- Date: 31/03/2023 09:20:01
+ Date: 19/04/2023 16:53:08
 */
 
 SET NAMES utf8mb4;
@@ -37,5 +37,7 @@ INSERT INTO `test_user` VALUES (64, 2);
 INSERT INTO `test_user` VALUES (64, 3);
 INSERT INTO `test_user` VALUES (65, 2);
 INSERT INTO `test_user` VALUES (65, 3);
+INSERT INTO `test_user` VALUES (66, 3);
+INSERT INTO `test_user` VALUES (67, 3);
 
 SET FOREIGN_KEY_CHECKS = 1;
